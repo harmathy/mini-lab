@@ -14,7 +14,7 @@ METALCTL_IMAGE_TAG=$(yq_shell "echo \"${RELEASE_YAML}\" | yq r - docker-images.m
 DEPLOYMENT_BASE_IMAGE_TAG=$(yq_shell "echo \"${RELEASE_YAML}\" | yq r - docker-images.metal-stack.generic.deployment-base.tag")
 
 echo "{}" > .extra_vars.yaml
-if [ ! -z ${ANSIBLE_EXTRA_VARS_FILE} ]; then
+if [ -n "${ANSIBLE_EXTRA_VARS_FILE}" ]; then
   cat ${ANSIBLE_EXTRA_VARS_FILE} > .extra_vars.yaml || echo "{}" > .extra_vars.yaml
 fi
 

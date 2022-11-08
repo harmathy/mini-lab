@@ -12,7 +12,7 @@ int_calc ()
 {
     index=0
     for i in $(ls -1v /sys/class/net/ | grep 'eth\|ens\|eno\|lan' | grep -v eth0); do
-      let index=index+1
+      ((index+=1))
     done
     MYINT=$index
 }
